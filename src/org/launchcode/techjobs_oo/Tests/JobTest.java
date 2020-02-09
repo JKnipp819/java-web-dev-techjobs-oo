@@ -21,4 +21,19 @@ public class JobTest {
         //This test should pass
         Assert.assertFalse(testJobOne.getName()==testJobTwo.getName());
     }
+
+    @Test
+    public void testJobConstructorSetsAllFields() {
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Assert.assertEquals("Product tester", testJob.getName());
+        Assert.assertEquals("ACME", testJob.getEmployer().getValue());
+        Assert.assertEquals("Desert", testJob.getLocation().getValue());
+        Assert.assertEquals("Quality control", testJob.getPositionType().getValue());
+        Assert.assertEquals("Persistence", testJob.getCoreCompetency().getValue());
+    }
+
+    @Test
+    public void testJobsForEquality() {
+        Assert.assertFalse(testJobOne.getId()==testJobTwo.getId());
+    }
 }
